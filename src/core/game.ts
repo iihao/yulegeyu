@@ -39,7 +39,7 @@ const useGame = () => {
 
   // 每个格子的宽高
   const widthUnit = 14;
-  const heightUnit = 14;
+  const heightUnit = 18;
 
   // 保存整个 "棋盘" 的每个格子状态（下标为格子起始点横纵坐标）
   let chessBoard: ChessBoardUnitType[][] = [];

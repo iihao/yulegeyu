@@ -8,7 +8,8 @@
 <script setup lang="ts"></script>
 <style scoped>
 #app {
-  background: url("assets/bg.jpeg");
+  /* background: url("assets/bg.jpeg"); */
+  background: #c9fac2;
   padding: 16px 16px 50px;
   min-height: 100vh;
   background-size: 100% 100%;

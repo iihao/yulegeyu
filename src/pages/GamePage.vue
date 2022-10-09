@@ -30,7 +30,12 @@
             }"
             @click="() => doClickBlock(block)"
           >
-            {{ block.type }}
+            <!-- {{ block.type }} -->
+            <img
+              :src="getAssetsFile(`${block.type}.png`)"
+              width="30"
+              height="30"
+            />
           </div>
         </div>
       </div>
@@ -48,7 +53,12 @@
           class="block"
           @click="() => doClickBlock(randomBlock[0], index)"
         >
-          {{ randomBlock[0].type }}
+          <!-- {{ randomBlock[0].type }} -->
+          <img
+            :src="getAssetsFile(`${randomBlock[0].type}.png`)"
+            width="30"
+            height="30"
+          />
         </div>
         <!-- 隐藏 -->
         <div
@@ -57,7 +67,12 @@
           class="block disabled"
         >
           <span v-if="canSeeRandom">
-            {{ randomBlock[num].type }}
+            <!-- {{ randomBlock[num].type }} -->
+            <img
+              :src="getAssetsFile(`${randomBlock[num].type}.png`)"
+              width="30"
+              height="30"
+            />
           </span>
         </div>
       </div>
@@ -65,7 +80,13 @@
     <!-- 槽位 -->
     <a-row v-if="slotAreaVal.length > 0" align="center" class="slot-board">
       <div v-for="(slotBlock, index) in slotAreaVal" :key="index" class="block">
-        {{ slotBlock?.type }}
+        <!-- {{ slotBlock?.type }} -->
+        <img
+          v-if="slotBlock?.type != undefined"
+          :src="getAssetsFile(`${slotBlock?.type}.png`) || ''"
+          width="30"
+          height="30"
+        />
       </div>
     </a-row>
     <!-- 技能 -->
@@ -90,6 +111,10 @@ import MyAd from "../components/MyAd.vue";
 
 const router = useRouter();
 
+//获取图片资源
+const getAssetsFile = (url: string) => {
+  return new URL(`../assets/icon/${url}`, import.meta.url).href;
+};
 const {
   gameStatus,
   levelBlocksVal,
@@ -153,17 +178,20 @@ onMounted(() => {
 .block {
   font-size: 28px;
   width: 42px;
-  height: 42px;
+  height: 48px;
   line-height: 42px;
-  border: 1px solid #eee;
-  background: white;
+  /* border: 1px solid #eee; */
+  background-image: url("../assets/icon/01.png");
+  background-position: center center;
+  /* 让背景图基于容器大小伸缩 */
+  background-size: cover;
   text-align: center;
   vertical-align: top;
   display: inline-block;
 }
 
 .disabled {
-  background: grey;
+  background-image: url("../assets/icon/02.png"), url("../assets/icon/01.png");
   cursor: not-allowed;
 }
 </style>
