@@ -9,7 +9,7 @@
       <div v-if="gameStatus === 3" style="text-align: center">
         <h2>恭喜，你赢啦！🎉</h2>
         <img alt="程序员鱼皮" src="../assets/kunkun.png" />
-        <my-ad style="margin-top: 16px" />
+        <my-git style="margin-top: 16px" />
       </div>
     </a-row>
     <!-- 分层选块 -->
@@ -107,7 +107,7 @@
 import useGame from "../core/game";
 import { onMounted } from "vue";
 import { useRouter } from "vue-router";
-import MyAd from "../components/MyAd.vue";
+import MyGit from "../components/MyAd.vue";
 
 const router = useRouter();
 
@@ -193,5 +193,8 @@ onMounted(() => {
 .disabled {
   background-image: url("../assets/icon/02.png"), url("../assets/icon/01.png");
   cursor: not-allowed;
+}
+img {
+  margin-bottom: 3px;
 }
 </style>
